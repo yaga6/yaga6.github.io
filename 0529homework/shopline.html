@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      header {
+        font-size: 15px;
+        background-color: rgb(243, 176, 53);
+        color: white;
+
+        display: flex;
+        /* display: flex 會將 header 變為一個彈性容器 */
+        justify-content: center;
+        /* 這個是對齊主軸 */
+        align-items: center;
+        /* 對齊交叉軸 */
+
+        height: 50px;
+      }
+      .login a {
+        text-decoration: none;
+      }
+      .login {
+        font-size: 12px;
+        background-color: rgb(212, 251, 251);
+
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        gap: 20px;
+        height: 30px;
+
+        padding-right: 30px;
+        /* margin 會在元素的外部創建空間，也就是元素與其他元素之間的空間。
+           padding 會在元素的內部創建空間，也就是元素的邊框與內部內容之間的空間。 */
+      }
+      .menu {
+        display: flex;
+        background-color: rgb(212, 251, 251);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .menu ul button {
+        border: none;
+        background-color: transparent;
+      }
+      .freetrial {
+        border-radius: 20%;
+        background-color: blue;
+        color: white;
+        border: none;
+
+        padding: 10px 20px;
+      }
+      .menu img ul {
+        display: flex;
+        justify-content: space-around;
+      }
+      .sectionOne {
+        height: 600px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-image: url("SL-Homework/1200x.webp");
+        background-size: cover;
+        background-position: center;
+      }
+      .sectionOneA {
+        /* text-align: center;讓文字每行都置中用這邊用不到 */
+        margin-right: 500px; /* 調整這個值以改變偏移量 (通過擠壓右邊空間)*/
+      }
+      .freetrialFourteen {
+        border-radius: 20%;
+        background-color: blue;
+        color: white;
+        border: none;
+        width: 300px;
+        height: 50px;
+      }
+      .sectionTwo {
+        display: flex;
+        justify-content: center;
+        background-color: rgb(230, 242, 237);
+      }
+      .sectionTwoA {
+        text-align: center;
+        padding: 50px;
+      }
+      .sectionThree {
+        background-color: rgb(241, 247, 245);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0px;
+        padding: 0px;
+      }
+      .sectionThreeA {
+        margin: 100px 50px;
+      }
+      .sectionThree img {
+        margin: 50px;
+      }
+      .sectionThreeB {
+        display: flex;
+      }
+      .sectionThree:nth-child(odd) {
+        flex-direction: row-reverse;
+      }
+      /* 為什麼我sectionFour與sectionThree已經設置沒有margin與padding他中間還是出空白地帶
+      雖然使用display: flex;可以解決但是這個問題想知道原因 */
+      .sectionFour {
+        background-color: rgb(241, 247, 245);
+        margin: 0px;
+        padding: 0px;
+      }
+      .sectionFourB {
+        display: flex;
+      }
+      .sectionFourC {
+        display: flex;
+      }
+      .sectionFour h1 {
+        text-align: center;
+        padding: 50px;
+      }
+      .sectionFourB {
+        display: flex;
+        justify-content: center;
+      }
+      .sectionFourB img {
+        width: 30%; 
+        height: auto; 
+      }
+      .sectionFourB div{
+        margin: 40px;
+        text-align: center;
+      }
+      .sectionFourC {
+        display: flex;
+        justify-content: center;
+      }
+      .sectionFourC img {
+        width: 30%; 
+        height: auto; 
+      }
+      .sectionFourC div{
+        margin: 40px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <header>你開業,我補貼!價值超過5萬補助,助你數位轉型</header>
+    </div>
+
+    <div>
+      <div class="login">
+        <a href="">登入</a>
+        <span>台灣</span>
+      </div>
+    </div>
+
+    <div class="menu">
+      <img src="SL-Homework/original.png" alt="logo圖片" />
+      <ul>
+        <button>新手上路</button>
+        <button>開店服務</button>
+        <button>行銷推廣</button>
+        <button>營運管理</button>
+        <button>方案費用</button>
+        <button>更多資源</button>
+        <button>開店說明會</button>
+      </ul>
+      <button class="freetrial">免費試用</button>
+    </div>
+
+    <div class="sectionOne">
+      <div class="sectionOneA">
+        <h1>
+          想在哪開店創業?
+          <br />
+          不管是網路開店
+          <br />
+          SHOPLINE一站輕鬆開賣
+        </h1>
+        <p>
+          從個人賣家到國際品牌，都能以 SHOPLINE實現全通路零售，
+          <br />
+          快速拓展市場到世界各地，輕鬆開始你的『 店 』商生意！
+        </p>
+        <button class="freetrialFourteen">免費試用14天</button>
+        <p>＊無需綁定信用卡提供付款資訊</p>
+      </div>
+    </div>
+
+    <div class="sectionTwo">
+      <div class="sectionTwoA">
+        <h1>
+          單一平台就能助你
+          <br />
+          在全通路輕鬆開店創業
+        </h1>
+        <p>
+          從網路商店架站到實體門市管理,只需要一個平台,就能輕鬆實現開店創業,並能同步管理所有銷售管道,SHOPLINE
+          助你賣得更多、賣得更好！
+        </p>
+      </div>
+    </div>
+
+    <div class="sectionThree">
+      <div class="sectionThreeA">
+        <h1>
+          免寫程式、多款版型
+          <br />
+          輕鬆打造全能電商網站
+        </h1>
+        <p>
+          不會寫程式也能輕鬆架設品牌電商官網！任何產業都能找到合適的專業
+          <br />
+          設計版型，以滑鼠拖曳就能完成網頁編輯，讓架設網站就像堆積木一樣
+          <br />
+          簡單。
+        </p>
+        <div class="sectionThreeB">
+          <ul>
+            <li>豐富版型主題與字型搭配</li>
+            <li>RWD 響應式網頁設計</li>
+            <li>獨有網址 & SSL 安全憑證</li>
+          </ul>
+          <ul>
+            <li>SEO 搜尋引擎優化</li>
+            <li>一頁商店</li>
+            <li>開放 HTML/CSS 編輯</li>
+          </ul>
+        </div>
+        <span><a href="">看看開店秘技</a></span>
+      </div>
+      <img src="SL-Homework/500x.webp" alt="" />
+    </div>
+
+    <div class="sectionThree">
+      <div class="sectionThreeA">
+        <h1>
+          支持海內外電商
+          <br />
+          金流、物流一次搞定
+        </h1>
+        <p>
+          支持在地及國際金流、物流串接服務，提供海內外顧客最便利的付款及
+          <br />
+          送貨服務，加速消費者完成下單交易，大幅降低購物車放棄率！
+        </p>
+        <div class="sectionThreeB">
+          <ul>
+            <li>線上／線下信用卡刷卡</li>
+            <li>第三方金流／行動支付整合</li>
+            <li>超商代碼／條碼繳費</li>
+          </ul>
+          <ul>
+            <li>多溫層宅配並指定運費</li>
+            <li>超商／宅配貨到付款</li>
+            <li>發票開立與串接</li>
+          </ul>
+        </div>
+        <span><a href="">了解更多金物流</a></span>
+      </div>
+      <img src="SL-Homework/500x1.webp" alt="" />
+    </div>
+
+    <div class="sectionThree">
+      <div class="sectionThreeA">
+        <h1>
+          刺激下單，創造回購
+          <br />
+          行銷導流、促購模組任你玩
+        </h1>
+        <p>
+          多元優惠活動、會員集客機制、網紅分潤等多種優惠促銷，將電商行銷
+          <br />
+          玩法一網打盡；加上廣告追蹤助你有效優化行銷活動，刺激顧客下單、
+          <br />
+          吸引鐵粉回購！
+        </p>
+        <div class="sectionThreeB">
+          <ul>
+            <li>推薦活動與分潤</li>
+            <li>A+B 優惠活動</li>
+            <li>會員分級／點數／購物金</li>
+          </ul>
+          <ul>
+            <li>買Ｘ享Ｙ優惠</li>
+            <li>會員推薦獎賞</li>
+            <li>FB／Google／LINE 廣告追蹤</li>
+          </ul>
+        </div>
+        <span><a href="">看更多優惠模組</a></span>
+      </div>
+      <img src="SL-Homework/500x (1).webp" alt="" />
+    </div>
+
+    <div class="sectionThree">
+      <div class="sectionThreeA">
+        <h1>
+          「社群+電商」輕鬆開賣
+          <br />
+          打造一致的社群購物體驗
+        </h1>
+        <p>
+          善用社群與顧客頻繁互動，讓你透過社群也能輕鬆開賣！從直播 +1 接
+          <br />
+          單、聊天機器人到各管道的訊息整合，我們都為你準備好了，不放過每
+          <br />
+          個銷售環節，打造全方位的社群購物體驗！
+        </p>
+        <div class="sectionThreeB">
+          <ul>
+            <li>社群直播購物系統</li>
+            <li>FB & IG 貼文 +1</li>
+            <li>自訂聊天機器人腳本</li>
+          </ul>
+          <ul>
+            <li>FB／IG／LINE 直播 +1</li>
+            <li>FB／IG／LINE 對話式購物</li>
+            <li>訊息整合中心</li>
+          </ul>
+        </div>
+        <span><a href="">看更多社群購物功能</a></span>
+      </div>
+      <img src="SL-Homework/500x (2).webp" alt="" />
+    </div>
+
+    <div class="sectionThree">
+      <div class="sectionThreeA">
+        <h1>
+          OMO 全通路無縫整併
+          <br />
+          輕鬆管理網店、門市以及其他通路
+        </h1>
+        <p>
+          不論是網店拓展門市，還是門市想發展網路生意，從商品、庫存、訂單
+          <br />
+          到會員等各項虛實店舖的資料都能完善整併，輕鬆實現全通路會員經營
+          <br />
+          到多店營運。
+        </p>
+        <div class="sectionThreeB">
+          <ul>
+            <li>門市 POS 系統</li>
+            <li>線上線下會員／商品／庫存整合</li>
+            <li>門市快速集客工具</li>
+          </ul>
+          <ul>
+            <li>線上買門市取</li>
+            <li>進銷庫存／調撥／多店管理</li>
+            <li>Smart OMO 會員導購工具</li>
+          </ul>
+        </div>
+        <span><a href="">了解更多全通路整合</a></span>
+      </div>
+      <img src="SL-Homework/500x (3).webp" alt="" />
+    </div>
+
+    <div class="sectionFour">
+      <h1>更多功能與服務</h1>
+      <div class="sectionFourA">
+        <div class="sectionFourB">
+          <div>
+            <img src="SL-Homework/9349992.png" alt="" />
+            <h3>強大庫存與訂單系統</h3>
+            <p>
+              從商品數量、貨況到訂單付款狀態、物流貨態
+              <br />
+              一目瞭然，提升營運效率超有感。
+            </p>
+          </div>
+
+          <div>
+            <img src="SL-Homework/1206793.png" alt="" />
+            <h3>即時化商店業績分析</h3>
+            <p>
+              圖表化報表助你一手掌握商店概況，讓數據助
+              <br />
+              攻企業成長，營運策略更有方向。
+            </p>
+          </div>
+
+          <div>
+            <img src="SL-Homework/5985367.png" alt="" />
+            <h3>多國語系、幣值切換</h3>
+            <p>
+              想做跨境電商也ＯＫ！提供語言、幣別、稅金
+              <br />
+              等進階功能，友善應對海外消費需求。
+            </p>
+          </div>
+        </div>
+
+        <div class="sectionFourC">
+          <div>
+            <img src="SL-Homework/4365160.png" alt="" />
+            <h3>專業顧問線上支援</h3>
+            <p>
+              迅速、透明的溝通管道，協助你快速解決從線
+              <br />
+              上到線下、從在地到海外的網店疑難。
+            </p>
+          </div>
+
+          <div>
+            <img src="SL-Homework/9958066.png" alt="" />
+            <h3>廣告行銷加值服務</h3>
+            <p>
+              由官方認證的專業投手團隊，協助品牌投遞
+              <br />
+              Facebook、Google、LINE 等廣告。
+            </p>
+          </div>
+
+          <div>
+            <img src="SL-Homework/7065745.png" alt="" />
+            <h3>品牌專屬成長社群</h3>
+            <p>
+              致力為品牌店家打造能深度交流且互助的生態
+              <br />
+              體系，是拓展人脈、商機的絕佳場域。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
