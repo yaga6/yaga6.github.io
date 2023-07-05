@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        display: flex;
+        justify-content: center;
+        margin: 20px;
+      }
+      button {
+        margin: 5px;
+      }
+      input::placeholder {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1>1A2B遊戲</h1>
+    </div>
+    <div class="inputArea">
+      <input type="text" id="thisIsInput" placeholder="輸入4個不重複的數字" />
+    </div>
+    <div class="buttonArea">
+      <button class="btn_start" id="start">開始(產生亂數)</button>
+      <button class="btn_guess" id="guess">猜</button>
+      <button class="btn_showAnswer" id="showAnswer">看答案</button>
+      <button class="btn_reStart" id="reStart">重來</button>
+    </div>
+    <div class="displayArea">
+      <ul id="messagegroup"></ul>
+    </div>
+
+    <!-- 主要判斷邏輯 -->
+    <script>
+      //===產亂數用的===
+      function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1) + min);
+      }
+      let answerArr = [];
+      function getRandomNums() {
+        do {
+          let number = getRandomInt(1, 9);
+          if (!answerArr.includes(number)) {
+            answerArr.push(number);
+          }
+        } while (answerArr.length < 4);
+        return answerArr;
+      }
+      //===產亂數用的===
+
+      //===開始(產生亂數)按鈕===
+      let btnStart = document.getElementById("start");
+      btnStart.addEventListener("click", function () {
+        answerArr = [];
+        getRandomNums();
+        //===按下去後調整按鈕使用權限===
+        guessInput.disabled = false;
+        btnStart.disabled = true;
+        btnGuess.disabled = false;
+        btnShowAnswer.disabled = false;
+        btnReStart.disabled = false;
+      });
+      //===開始(產生亂數)按鈕===
+
+      //===看答案按鈕===
+      let btnShowAnswer = document.getElementById("showAnswer");
+      btnShowAnswer.addEventListener("click", function () {
+        alert("答案是" + answerArr);
+      });
+      //===看答案按鈕===
+
+      //===重來按鈕===
+      let btnReStart = document.getElementById("reStart");
+      btnReStart.addEventListener("click", function () {
+        answerArr = [];
+        let messageGroupContainer = document.getElementById("messagegroup");
+        messageGroupContainer.innerHTML = ""; //清空內容
+        //===按下去後調整按鈕使用權限===
+        guessInput.disabled = true;
+        btnStart.disabled = false;
+        btnGuess.disabled = true;
+        btnShowAnswer.disabled = true;
+        btnReStart.disabled = true;
+      });
+      //===重來按鈕===
+
+      let guessInput = document.getElementById("thisIsInput");
+      //===猜按鈕===
+      let btnGuess = document.getElementById("guess");
+      btnGuess.addEventListener("click", function () {
+        checkTheAnswer();
+      });
+      //===猜按鈕===
+
+      //===檢查答案的功能===
+      let guessInputNums;
+      let guessInputNumsArray = [];
+      let guessCount = 0; //用來紀錄猜測次數(這個紀錄的變數是放在方法外面的,這樣寫不優)
+      function checkTheAnswer() {
+        guessInputNums = guessInput.value;
+        //return guessInputNums;//檢查用,用return會中斷執行不好
+        //console.log(guessInputNums); //檢查用
+        guessInputNumsArray = guessInputNums.split("");
+        //console.log(guessInputNumsArray); //檢查用
+        //console.log(typeof guessInputNumsArray[0]); //檢查用打印陣列中第一個元素的類型
+
+        guessArr = guessInputNumsArray.map(Number); //把陣列中元素轉成數字
+
+        //用set檢查輸入的值是否有重複的數字,等等放入判斷式中使用
+        checkIfIsrepeated = new Set(guessArr); //set出來就不是陣列了是set物件
+
+        if (
+          (guessInputNums =
+            "" ||
+            isNaN(guessInputNums) ||
+            guessArr.length != 4 ||
+            guessArr.length != checkIfIsrepeated.size)
+        ) {
+          //checkIfIsrepeated.size 是用來獲取 checkIfIsrepeated Set 中的元素數量。
+          //在 Set 中，.size 是一個屬性，可以返回 Set 中元素的數量。
+          alert("請重新輸入4位數不重複數字");
+          guessInput.value = "";
+          return;
+        }
+
+        guessCount = guessCount + 1; //用來紀錄猜測次數(這個紀錄的變數是放在方法外面的,這樣寫不優)
+
+        //===1A2B的檢查邏輯===
+        let outPutA = 0;
+        let outPutB = 0;
+        for (let i = 0; i < answerArr.length; i++) {
+          if (answerArr[i] === guessArr[i]) {
+            outPutA = outPutA + 1;
+          } else if (answerArr.includes(guessArr[i])) {
+            outPutB = outPutB + 1;
+          }
+        }
+        //===1A2B的檢查邏輯===
+
+        //===輸出當次猜測結果===
+        let showP = document.createElement("li");
+        let lineBreak = document.createElement("br");
+        showP.textContent = `${outPutA}A${outPutB}B 你輸入的四個數字為${guessInput.value}`;
+        let messageGroupContainer = document.getElementById("messagegroup");
+        messageGroupContainer.append(lineBreak);
+        messageGroupContainer.append(showP);
+        //===先換行,然後輸出當次猜測結果===
+
+        //===如果輸入正確的判斷===
+        if (outPutA === 4) {
+          let answerP = document.createElement("h5");
+          answerP.textContent = `猜對了,答案是${answerArr},你總共猜了${guessCount}次`;
+          messageGroupContainer.append(answerP);
+          guessCount = 0; //猜測成功後把猜測的次數計算器清空(這個紀錄的變數是放在方法外面的,這樣寫不優)
+          btnGuess.disabled = true;
+          guessInput.disabled = true;
+        }
+        //===如果輸入正確的判斷===
+        guessInput.value = ""; //每次判斷後清空輸入欄位
+      }
+      //===檢查答案的功能===
+
+      //===初次載入,並且按下開始按鈕之前,開始(產生亂數按鈕可以按)其他按鈕都反灰
+      function gameStart() {
+        guessInput.disabled = true;
+        btnGuess.disabled = true;
+        btnShowAnswer.disabled = true;
+        btnReStart.disabled = true;
+      }
+      //===初次載入,並且按下開始按鈕之前,開始(產生亂數按鈕可以按)其他按鈕都反灰
+
+      //===最後再包進來就好===
+      window.onload = function () {
+        gameStart();
+        checkTheAnswer();
+      };
+    </script>
+    <!-- 主要判斷邏輯 -->
+  </body>
+</html>
