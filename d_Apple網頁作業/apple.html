@@ -163,6 +163,7 @@
       function product_filter() {
         const filteredProducts = productData.filter(function (product) {
           return (
+            // 這邊應該要依照選擇的頁面加入iphone/mac/ipad等篩選條件
             product.color === selectColor &&
             product.storage === selectStorage &&
             product.network === selectNetwork
