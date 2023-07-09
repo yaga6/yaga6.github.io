@@ -155,6 +155,8 @@
       btn_cellular.addEventListener("click", function () {
         selectNetwork = "Cellular";
         product_filter()
+        //按下選擇後清除同類型的全部外框
+        //然後再自己的外框增加顏色
       });
 
       let productData = {};
@@ -169,10 +171,11 @@
             product.network === selectNetwork
           );
         });
+        console.log(filteredProducts);
 
         if (filteredProducts.length > 0) {
-          const price = filteredProducts[0].price;
-          document.getElementById("price").textContent = "價格：" + price;
+          const finalPrice = filteredProducts[0].price;
+          document.getElementById("price").textContent = "價格：" + finalPrice;
         } else {
           document.getElementById("price").textContent = "未找到匹配的產品。";
         }
